@@ -1,3 +1,9 @@
+![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
+![NumPy](https://img.shields.io/badge/numpy-%23013243.svg?style=for-the-badge&logo=numpy&logoColor=white)
+![Pandas](https://img.shields.io/badge/pandas-%23150458.svg?style=for-the-badge&logo=pandas&logoColor=white)
+![scikit-learn](https://img.shields.io/badge/scikit--learn-%23F7931E.svg?style=for-the-badge&logo=scikit-learn&logoColor=white)
+![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=Streamlit&logoColor=white)
+
 # BBC-NEWS-Classification-using-NLP
 
 This project is about text classification ie: given a text, we would want to predict its class (tech, business, sport, entertainment or politics).
@@ -110,28 +116,33 @@ below is our model architecture:
 
 ![model_arc](static/model_plot.png)
 
-hist.history.keys()
+# Model Evaluation
+during this step we will study our model accuracy and loss to check the effectiveness of our model.
 
-plt.figure()
-plt.plot(hist.history['loss'],'r--',label='Training loss')
-plt.plot(hist.history['val_loss'],label='Validation loss')
-plt.legend()
-plt.plot()
+            hist.history.keys()
 
-plt.figure()
-plt.plot(hist.history['acc'],'r--',label='Training acc')
-plt.plot(hist.history['val_acc'],label='Validation acc')
-plt.legend()
-plt.plot()
+            plt.figure()
+            plt.plot(hist.history['loss'],'r--',label='Training loss')
+            plt.plot(hist.history['val_loss'],label='Validation loss')
+            plt.legend()
+            plt.plot()
 
-Eva = Model_Evaluate()
-Eva.EvaluateMymodel(model,X_test,y_test)
-model.save(MODEL_SAVE_PATH)
+            plt.figure()
+            plt.plot(hist.history['acc'],'r--',label='Training acc')
+            plt.plot(hist.history['val_acc'],label='Validation acc')
+            plt.legend()
+            plt.plot()
 
-token_json = tokenizer.to_json()
+            Eva = Model_Evaluate()
+            Eva.EvaluateMymodel(model,X_test,y_test)
+            
+below is our model acurracy and f1 score:
 
-with open(TOKENIZER_PATH,'w') as file:
-    json.dump(token_json,file)
+![model_acc](static/Accuracy.PNG)
 
-with open(OHE_PATH,'wb') as file:
-    pickle.dump(ohe,file)
+
+and here is our validation and training loss plot using tensorboard:
+
+![plot](static/Tensorboard.PNG)
+
+
